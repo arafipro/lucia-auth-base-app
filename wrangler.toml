@@ -6,6 +6,6 @@ pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "DB"     
-database_name = "lucia-auth-db"
+database_name = "lucia-auth-base-db"
 database_id = "<unique-ID-for-your-database>"
 migrations_dir = "./drizzle/migrations"
