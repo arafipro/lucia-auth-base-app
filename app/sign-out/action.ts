@@ -1,12 +1,10 @@
 "use server";
 
 import { initializeLucia, validateRequest } from "@/auth";
-import { getRequestContext } from "@cloudflare/next-on-pages";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 export async function logout(): Promise<ActionResult> {
-  const { env } = getRequestContext();
   const { session } = await validateRequest();
   if (!session) {
     return {
@@ -14,9 +12,9 @@ export async function logout(): Promise<ActionResult> {
     };
   }
 
-  await initializeLucia(env.DB).invalidateSession(session.id);
+  await initializeLucia().invalidateSession(session.id);
 
-  const sessionCookie = initializeLucia(env.DB).createBlankSessionCookie();
+  const sessionCookie = initializeLucia().createBlankSessionCookie();
   cookies().set(
     sessionCookie.name,
     sessionCookie.value,
