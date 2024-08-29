@@ -1,0 +1,11 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "lucia-auth-base-app"
+compatibility_date = "2024-08-21"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[[d1_databases]]
+binding = "DB"     
+database_name = "lucia-auth-db"
+database_id = "<unique-ID-for-your-database>"
+migrations_dir = "./drizzle/migrations"
